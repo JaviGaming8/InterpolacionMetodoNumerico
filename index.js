@@ -112,7 +112,7 @@ const redraw = () => {
 window.addEventListener("load", () => {
     plot();
 });
-ñ
+
 data_form.addEventListener("change", () => {
     redraw();
 });
