@@ -1,6 +1,6 @@
-// ================================
-// Selección de elementos del DOM
-// ================================
+// =================================================
+// Selección de Elementos del DOM
+// =================================================
 const formularioDatos = document.getElementById("data-form");
 const entradaX1 = document.getElementById("x1-input");
 const entradaY1 = document.getElementById("y1-input");
@@ -10,9 +10,9 @@ const entradaX = document.getElementById("x-input");
 const respuesta = document.getElementById("answer");
 const tablaResultados = document.getElementById("tabla-resultados").querySelector("tbody");
 
-// ================================
-// Configuración de la gráfica (Plotly)
-// ================================
+// =================================================
+// Configuración de la Gráfica con Plotly
+// =================================================
 let datos = [
   {
     x: [0, 0],
@@ -53,13 +53,13 @@ let layout = {
 
 let config = { responsive: true };
 
-// ================================
+// =================================================
 // Funciones de Cálculo y Actualización
-// ================================
+// =================================================
 
 /**
  * Calcula el valor real simulado para un valor dado de x.
- * Se utiliza una función cuadrática que pasa por los puntos de control.
+ * Utiliza una función cuadrática que pasa por los puntos de control.
  * @param {number} x - Valor en el eje x.
  * @returns {number} Valor simulado en y.
  */
@@ -68,7 +68,7 @@ const funcionValorReal = (x) => {
   const y1 = parseFloat(entradaY1.value);
   const x2 = parseFloat(entradaX2.value);
   const y2 = parseFloat(entradaY2.value);
-  // Fórmula: y = a*(x - x1)^2 + y1, donde a se calcula con los puntos de control
+  // Fórmula: y = a*(x - x1)² + y1, donde a se calcula con los puntos de control
   const a = (y2 - y1) / Math.pow(x2 - x1, 2);
   return a * Math.pow(x - x1, 2) + y1;
 };
@@ -80,10 +80,10 @@ const funcionValorReal = (x) => {
  * @param {number} y1 - Primer valor de y.
  * @param {number} y2 - Segundo valor de y.
  * @param {number} x - Valor de x para el cual se desea interpolar.
- * @returns {number} Valor interpolado de y.
+ * @returns {number} Valor interpolado en y.
  */
 const interpolacionLineal = (x1, x2, y1, y2, x) => {
-  let m = (y2 - y1) / (x2 - x1);
+  const m = (y2 - y1) / (x2 - x1);
   return y1 + m * (x - x1);
 };
 
@@ -100,10 +100,10 @@ const calcularDatos = () => {
   const yInterpolado = interpolacionLineal(x1, x2, y1, y2, x);
   const yReal = funcionValorReal(x);
 
-  // Generación de puntos para la curva de la función real
+  // Generar puntos para la curva de la función real
+  const pasos = 20;
   let puntosCurvaRealX = [];
   let puntosCurvaRealY = [];
-  const pasos = 20;
   for (let i = 0; i <= pasos; i++) {
     const xi = x1 + ((x2 - x1) * i) / pasos;
     puntosCurvaRealX.push(xi);
@@ -114,12 +114,12 @@ const calcularDatos = () => {
 };
 
 /**
- * Actualiza los datos de la gráfica y la tabla con los nuevos valores.
+ * Actualiza la gráfica y la tabla de resultados con los nuevos valores.
  */
 const actualizarDatos = () => {
   const { x1, y1, x2, y2, x, yInterpolado, yReal, puntosCurvaRealX, puntosCurvaRealY } = calcularDatos();
 
-  // Actualización de datos en la gráfica
+  // Actualizar datos en la gráfica
   datos[0].x = [x1, x2];
   datos[0].y = [y1, y2];
   datos[1].x = [x];
@@ -129,10 +129,10 @@ const actualizarDatos = () => {
   datos[3].x = puntosCurvaRealX;
   datos[3].y = puntosCurvaRealY;
 
-  // Actualización del mensaje de respuesta
+  // Actualizar mensaje de respuesta
   respuesta.textContent = `Valor interpolado: ${yInterpolado.toFixed(4)} | Valor real simulado: ${yReal.toFixed(4)} | Diferencia: ${Math.abs(yInterpolado - yReal).toFixed(4)}`;
 
-  // Actualización de la tabla de resultados
+  // Actualizar la tabla de resultados
   tablaResultados.innerHTML = `
     <tr>
       <td>${x1}</td>
@@ -148,7 +148,7 @@ const actualizarDatos = () => {
 };
 
 /**
- * Inicializa la gráfica.
+ * Inicializa la gráfica al cargar la página.
  */
 const graficar = () => {
   actualizarDatos();
@@ -156,15 +156,15 @@ const graficar = () => {
 };
 
 /**
- * Redibuja la gráfica con los nuevos datos.
+ * Redibuja la gráfica al detectar cambios en el formulario.
  */
 const redibujar = () => {
   actualizarDatos();
   Plotly.redraw("plot");
 };
 
-// ================================
-// Eventos: Carga de la página y cambios en el formulario
-// ================================
+// =================================================
+// Eventos: Carga de la Página y Actualización
+// =================================================
 window.addEventListener("load", graficar);
 formularioDatos.addEventListener("change", redibujar);
