@@ -1,230 +1,261 @@
 :root {
-    --primary-bg-color: #f0f2f5;
-    --secondary-bg-color: #ffffff;
-    --text-color-principal: #333333;
-    --text-color-secundario: #555555;
-    --accent-color: #007bff;
-    --border-radius: 8px;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background-color: var(--primary-bg-color);
-    font-family: var(--font-family);
-    color: var(--text-color-principal);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  /* ================================ */
-  /* Cabecera                         */
-  /* ================================ */
-  header {
-    background-color: var(--secondary-bg-color);
-    box-shadow: var(--box-shadow);
-    padding: 1em;
-  }
-  
+  /* Definición de variables globales para facilitar la personalización del diseño */
+  --primary-bg-color: #f0f2f5;  /* Color de fondo principal */
+  --secondary-bg-color: #ffffff;  /* Color de fondo secundario */
+  --text-color-principal: #333333;  /* Color principal del texto */
+  --text-color-secundario: #555555;  /* Color secundario del texto */
+  --accent-color: #007bff;  /* Color de acento, utilizado en botones y enlaces */
+  --border-radius: 8px;  /* Radio de borde para redondear esquinas */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra para los contenedores */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Fuente principal */
+}
+
+*,
+*::before,
+*::after {
+  /* Aplicar box-sizing para que padding y border no afecten el tamaño total de los elementos */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Estilos globales del cuerpo de la página */
+  background-color: var(--primary-bg-color);
+  font-family: var(--font-family);
+  color: var(--text-color-principal);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* Asegura que el cuerpo tenga una altura mínima de la pantalla */
+}
+
+/* ================================ */
+/* Cabecera (Header)                */
+/* ================================ */
+header {
+  /* Estilos de la cabecera */
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--box-shadow);
+  padding: 1em;
+}
+
+.header-container {
+  /* Contenedor de la cabecera con flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;  /* Centra la cabecera */
+}
+
+header h1 {
+  /* Estilo del título de la cabecera */
+  font-size: 2rem;
+  color: var(--accent-color);  /* Color del título */
+}
+
+nav ul {
+  /* Estilo para la barra de navegación */
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+}
+
+nav ul li a {
+  /* Estilo para los enlaces del menú */
+  text-decoration: none;
+  color: var(--text-color-secundario);
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  /* Efecto hover para los enlaces */
+  color: var(--accent-color);
+}
+
+/* ================================ */
+/* Secciones: Descripción y Resultados */
+/* ================================ */
+.seccion {
+  /* Contenedor general de las secciones */
+  padding: 2em 1em;
+  max-width: 1200px;
+  margin: 0 auto;  /* Centra la sección */
+}
+
+.descripcion-container {
+  /* Estilo de la sección de descripción */
+  background-color: var(--secondary-bg-color);
+  padding: 1.5em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2em;  /* Espacio inferior entre la descripción y el siguiente contenido */
+}
+
+.descripcion-container h2 {
+  /* Estilo del título de la descripción */
+  text-align: center;
+  margin-bottom: 1em;
+  color: var(--accent-color);  /* Color del título */
+}
+
+.descripcion-container p {
+  /* Estilo del párrafo dentro de la descripción */
+  text-align: justify;
+  margin-bottom: 1em;
+}
+
+.descripcion-container .creadores {
+  /* Estilo para la sección de creadores de la descripción */
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color-secundario);
+}
+
+/* ================================ */
+/* Contenido principal: Formulario, Gráfica y Tabla */
+/* ================================ */
+.contenido {
+  /* Contenedor principal del contenido */
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* Formulario y Gráfica */
+#graphics-plot {
+  /* Estilo del contenedor que agrupa la gráfica y el formulario */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;  /* Espaciado entre los elementos */
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#data-form {
+  /* Estilo del formulario */
+  background-color: var(--secondary-bg-color);
+  padding: 1.5em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 320px;  /* Ancho fijo del formulario */
+}
+
+.form-group {
+  /* Estilo de cada grupo de formulario */
+  margin-bottom: 1em;
+}
+
+#data-form label {
+  /* Estilo para las etiquetas del formulario */
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  display: block;
+  color: var(--text-color-secundario);
+}
+
+#data-form input {
+  /* Estilo para los campos de entrada del formulario */
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+#data-form input:focus {
+  /* Estilo para el campo de entrada cuando está enfocado */
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* Gráfica */
+#plot {
+  /* Estilo para la gráfica */
+  max-width: 700px;
+  width: 100%;
+  height: 400px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Respuesta */
+#answer {
+  /* Estilo para el área de la respuesta */
+  text-align: center;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin: 1em 0;
+}
+
+/* Tabla de resultados */
+.tabla-container {
+  /* Contenedor de la tabla con overflow */
+  overflow-x: auto;
+}
+
+#tabla-resultados {
+  /* Estilo para la tabla de resultados */
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--box-shadow);
+}
+
+#tabla-resultados th,
+#tabla-resultados td {
+  /* Estilo para las celdas de la tabla */
+  padding: 0.75em;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#tabla-resultados th {
+  /* Estilo para las cabeceras de la tabla */
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+/* ================================ */
+/* Pie de página                    */
+/* ================================ */
+footer {
+  /* Estilo del pie de página */
+  background-color: var(--secondary-bg-color);
+  text-align: center;
+  padding: 1em;
+  margin-top: auto;
+  box-shadow: var(--box-shadow);
+  font-size: 0.9em;
+  color: var(--text-color-secundario);
+}
+
+/* ================================ */
+/* Media Queries para dispositivos  */
+/* ================================ */
+@media screen and (max-width: 768px) {
   .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  header h1 {
-    font-size: 2rem;
-    color: var(--accent-color);
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5em;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: var(--text-color-secundario);
-    transition: color 0.3s ease;
-  }
-  
-  nav ul li a:hover {
-    color: var(--accent-color);
-  }
-  
-  /* ================================ */
-  /* Secciones: Descripción y Resultados */
-  /* ================================ */
-  .seccion {
-    padding: 2em 1em;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .descripcion-container {
-    background-color: var(--secondary-bg-color);
-    padding: 1.5em;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    margin-bottom: 2em;
-  }
-  
-  .descripcion-container h2 {
-    text-align: center;
-    margin-bottom: 1em;
-    color: var(--accent-color);
-  }
-  
-  .descripcion-container p {
-    text-align: justify;
-    margin-bottom: 1em;
-  }
-  
-  .descripcion-container .creadores {
-    text-align: center;
-    font-weight: bold;
-    color: var(--text-color-secundario);
-  }
-  
-  /* ================================ */
-  /* Contenido principal: Formulario, Gráfica y Tabla */
-  /* ================================ */
-  .contenido {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-  }
-  
-  /* Formulario y Gráfica */
-  #graphics-plot {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2em;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  
-  #data-form {
-    background-color: var(--secondary-bg-color);
-    padding: 1.5em;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    width: 320px;
-  }
-  
-  .form-group {
-    margin-bottom: 1em;
-  }
-  
-  #data-form label {
-    font-weight: 600;
-    margin-bottom: 0.5em;
-    display: block;
-    color: var(--text-color-secundario);
-  }
-  
-  #data-form input {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-  }
-  
-  #data-form input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-  }
-  
-  /* Gráfica */
-  #plot {
-    max-width: 700px;
-    width: 100%;
-    height: 400px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-  }
-  
-  /* Respuesta */
-  #answer {
-    text-align: center;
-    font-weight: bold;
-    color: var(--accent-color);
-    margin: 1em 0;
-  }
-  
-  /* Tabla de resultados */
-  .tabla-container {
-    overflow-x: auto;
-  }
-  
-  #tabla-resultados {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    background-color: var(--secondary-bg-color);
-    box-shadow: var(--box-shadow);
-  }
-  
-  #tabla-resultados th,
-  #tabla-resultados td {
-    padding: 0.75em;
-    text-align: center;
-    border: 1px solid #ddd;
-  }
-  
-  #tabla-resultados th {
-    background-color: var(--accent-color);
-    color: #fff;
-  }
-  
-  /* ================================ */
-  /* Pie de página                    */
-  /* ================================ */
-  footer {
-    background-color: var(--secondary-bg-color);
-    text-align: center;
-    padding: 1em;
-    margin-top: auto;
-    box-shadow: var(--box-shadow);
-    font-size: 0.9em;
-    color: var(--text-color-secundario);
-  }
-  
-  /* ================================ */
-  /* Media Queries para dispositivos  */
-  /* ================================ */
-  @media screen and (max-width: 768px) {
-    .header-container {
+      /* Para pantallas pequeñas, cambia la orientación de los elementos del header */
       flex-direction: column;
       gap: 1em;
-    }
-  
-    #graphics-plot {
+  }
+
+  #graphics-plot {
+      /* En pantallas pequeñas, cambia la dirección de los elementos (formulario y gráfica) */
       flex-direction: column;
       align-items: center;
-    }
-  
-    #data-form {
-      width: 90%;
-    }
-  
-    #plot {
+  }
+
+  #data-form {
+      /* El formulario ocupará un 90% del ancho en pantallas pequeñas */
+      width: 10%;
+  }
+
+  #plot {
+      /* Ajusta el tamaño de la gráfica en pantallas pequeñas */
       max-width: 90%;
       height: 350px;
-    }
   }
-  
+}
