@@ -2,37 +2,110 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="stylesheet" href="index.css">
-    <title>Interpolación Lineal</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Aplicación profesional de interpolación lineal comparada con un valor real simulado mediante una función cuadrática.">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="index.css">
+  <title>Interpolación Lineal Profesional</title>
 </head>
 
 <body>
-    <header>
-        <h1>Interpolación Lineal</h1>
-    </header>
-    <section class="graphics">
-        <div id="graphics-plot">
-            <form id="data-form">
-                <label for="x1-input">Valor <i>x<sub>1</sub></i>:</label>
-                <input type="number" id="x1-input" value="0" step="any">
-                <label for="y1-input">Valor <i>y<sub>1</sub></i>:</label>
-                <input type="number" id="y1-input" value="1" step="any">
-                <label for="x2-input">Valor <i>x<sub>2</sub></i>:</label>
-                <input type="number" id="x2-input" value="5" step="any">
-                <label for="y2-input">Valor <i>y<sub>2</sub></i>:</label>
-                <input type="number" id="y2-input" value="2" step="any">
-                <label for="x-input">Valor <i>x</i>:</label>
-                <input type="number" id="x-input" value="2" step="any">
-            </form>
-            <div id="plot"></div>
-        </div>
-        <p id="answer"></p>
-    </section>
+  <!-- Cabecera -->
+  <header>
+    <div class="header-container">
+      <h1>Interpolación Lineal</h1>
+      <nav>
+        <ul>
+          <li><a href="#descripcion">Descripción</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sección de descripción -->
+  <section id="descripcion" class="seccion">
+    <div class="descripcion-container">
+      <h2>Acerca de la Aplicación</h2>
+      <p>
+        Esta aplicación profesional realiza una interpolación lineal entre dos puntos y la compara con un valor real simulado mediante una función cuadrática.
+      </p>
+      <p>
+        <strong>Fórmula de interpolación:</strong>
+        <br>
+        <em>y = y<sub>1</sub> + ((y<sub>2</sub> - y<sub>1</sub>) / (x<sub>2</sub> - x<sub>1</sub>)) · (x - x<sub>1</sub>)</em>
+      </p>
+      <p class="creadores">
+        Creado por: <span>Javier, Brayan y Jona</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección de resultados -->
+  <section id="resultados" class="seccion">
+    <div class="contenido">
+      <!-- Formulario y gráfica -->
+      <div id="graphics-plot">
+        <form id="data-form">
+          <div class="form-group">
+            <label for="x1-input">Valor <i>x<sub>1</sub></i>:</label>
+            <input type="number" id="x1-input" value="0" step="any">
+          </div>
+          <div class="form-group">
+            <label for="y1-input">Valor <i>y<sub>1</sub></i>:</label>
+            <input type="number" id="y1-input" value="1" step="any">
+          </div>
+          <div class="form-group">
+            <label for="x2-input">Valor <i>x<sub>2</sub></i>:</label>
+            <input type="number" id="x2-input" value="5" step="any">
+          </div>
+          <div class="form-group">
+            <label for="y2-input">Valor <i>y<sub>2</sub></i>:</label>
+            <input type="number" id="y2-input" value="2" step="any">
+          </div>
+          <div class="form-group">
+            <label for="x-input">Valor <i>x</i>:</label>
+            <input type="number" id="x-input" value="2" step="any">
+          </div>
+        </form>
+        <div id="plot"></div>
+      </div>
+      <p id="answer"></p>
+
+      <!-- Tabla de resultados -->
+      <div class="tabla-container">
+        <table id="tabla-resultados">
+          <thead>
+            <tr>
+              <th>x<sub>1</sub></th>
+              <th>y<sub>1</sub></th>
+              <th>x<sub>2</sub></th>
+              <th>y<sub>2</sub></th>
+              <th>x</th>
+              <th>Valor Interpolado</th>
+              <th>Valor Real Simulado</th>
+              <th>Diferencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Se actualizarán los datos calculados -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Interpolación Lineal Profesional. Todos los derechos reservados.</p>
+    <p>Creado por Javier, Brayan y Jona.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="./index.js"></script>
 </body>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="./index.js"></script>
+
 </html>
